@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UOU 디자인 · 울리니 에디션</title>
+<meta name="description" content="울산대학교 디자인 문법(DESIGN-UOU.md)에 공식 마스코트 울리니와 주아 폰트를 입힌 커스텀 에디션 미리보기">
+<link rel="icon" type="image/png" href="assets/ulrinee/ulrinee-main.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+/* 값은 모두 DESIGN-UOU.md 토큰에서 가져온다 */
+:root{
+  --primary:#006B3C; --primary-deep:#004D2B; --primary-light:#2E8B57;
+  --gray:#58595B; --gray-light:#9EA0A2; --yellow:#F2A900; --yellow-soft:#FFD966;
+  --ink:#1A1A1A; --ink-80:#333333; --ink-60:#666666; --ink-40:#999999; --body:#222222;
+  --hairline:#E5E5E5; --divider:#F0F0F0; --canvas:#FFFFFF; --canvas-warm:#F7F7F5; --pearl:#FAFAFA;
+  --status-new:#E63946; --status-info:#0066B2;
+  --u-leaf:#B9D887; --u-sprout:#99C45C; --u-cream:#F9E79B; --u-moss:#76A854; --u-line:#2C3D28; --u-blush:#EDBE7F; --u-mouth:#F08C8C;
+  --ff:Jua, Pretendard, "Noto Sans KR", "Malgun Gothic", -apple-system, sans-serif;
+  --r-xs:2px; --r-sm:4px; --r-md:8px; --r-lg:12px;
+  --shadow-hover:0 6px 20px rgba(0,0,0,.10);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--body);font-family:var(--ff);font-weight:400;font-synthesis:none;
+  font-size:15px;line-height:1.7;letter-spacing:-0.02em;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,h4,p{margin:0;font-weight:400}
+h1,h2,h3,h4{color:var(--ink);text-wrap:balance}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-deep);text-decoration:underline}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;letter-spacing:0;
+  background:var(--pearl);border:1px solid var(--hairline);border-radius:var(--r-xs);padding:1px 5px;word-break:break-all}
+.wrap{max-width:1200px;margin:0 auto}
+.band{padding:96px 64px}
+.band-warm{background:var(--canvas-warm)}
+.band-dark{background:var(--primary-deep);color:#fff}
+.band-dark h2{color:#fff}
+.eyebrow{font-size:13px;line-height:1.5;color:var(--primary);letter-spacing:0}
+.section-title{font-size:28px;line-height:1.35;letter-spacing:-0.56px}
+.section-lead{font-size:17px;line-height:1.65;color:var(--ink-60);max-width:62ch;margin-top:8px}
+.section-head{display:flex;flex-direction:column;gap:4px;margin-bottom:32px}
+
+/* 머리글: 사이트 셸이 아닌 최소 페이지 헤더 */
+.page-header{border-bottom:1px solid var(--hairline);padding:16px 64px}
+.page-header .wrap{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink)}
+.brand:hover{text-decoration:none;color:var(--ink)}
+.brand img{height:56px;width:auto;display:block}
+.brand-name{font-size:22px;line-height:1.4;letter-spacing:-0.44px}
+.brand-sub{display:block;font-size:13px;line-height:1.5;color:var(--ink-60);letter-spacing:-0.26px}
+
+/* 히어로 */
+.hero{padding:96px 64px 88px;background:var(--canvas-warm)}
+.hero h1{font-size:52px;line-height:1.2;letter-spacing:-1.04px;max-width:16ch}
+.hero .lead{font-size:20px;line-height:1.55;letter-spacing:-0.4px;color:var(--ink-80);max-width:56ch;margin-top:20px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 24px;border-radius:var(--r-sm);
+  font-family:var(--ff);font-size:15px;line-height:1;letter-spacing:-0.3px;cursor:pointer;border:1px solid transparent;text-decoration:none}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn-primary:hover{color:#fff}
+.btn-primary:active{background:var(--primary-deep);border-color:var(--primary-deep)}
+.btn-outline{background:transparent;color:var(--primary);border-color:var(--primary)}
+.btn-outline-dark{background:transparent;color:#fff;border-color:#fff}
+.btn-outline-dark:hover{color:#fff;background:rgba(255,255,255,.08)}
+.btn-ghost{background:transparent;color:var(--ink-80);padding:10px 16px}
+
+/* 배지 */
+.badge{display:inline-block;font-size:11px;line-height:1;letter-spacing:0;padding:3px 6px;border-radius:var(--r-xs);vertical-align:middle}
+.badge-new{background:var(--status-new);color:#fff}
+.badge-yellow{background:var(--yellow);color:var(--ink)}
+.badge-ulrinee{background:var(--u-leaf);color:var(--u-line)}
+.badge-category{font-size:13px;line-height:1.5;letter-spacing:-0.26px;padding:2px 6px;color:var(--primary);border:1px solid var(--primary);border-radius:var(--r-xs)}
+
+/* 카드 그리드 */
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-md);padding:24px;display:flex;flex-direction:column;gap:10px;
+  transition:box-shadow .2s ease,transform .2s ease;min-width:0}
+.card:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+.card h3{font-size:18px;line-height:1.45;letter-spacing:-0.36px}
+.card p{color:var(--ink-80)}
+.card .meta{font-size:13px;line-height:1.5;color:var(--ink-60);margin-top:auto}
+.card-featured{background:var(--primary);border-color:var(--primary);color:#fff}
+.card-featured h3,.card-featured p,.card-featured .meta{color:#fff}
+.card-featured .badge-category{color:#fff;border-color:#fff}
+
+/* 버그 수정: 이전 → 이후 */
+.fix .k{font-size:12px;line-height:1.5;letter-spacing:0;color:var(--ink-60)}
+.fix .before code{text-decoration:line-through;text-decoration-color:var(--status-new);color:var(--ink-60)}
+.fix .after .k{color:var(--primary)}
+.fix .after code{background:#EAF3EE;border-color:#CFE3D7;color:var(--primary-deep)}
+.fix .row{display:flex;flex-direction:column;gap:4px}
+
+/* 색상 견본 */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.swatch{border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--canvas)}
+.swatch .chip{height:84px}
+.swatch .info{padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.swatch .name{font-size:15px;line-height:1.4;color:var(--ink)}
+.swatch .hex{font-size:13px;line-height:1.5;color:var(--ink-60);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
+.palette-label{font-size:18px;line-height:1.45;letter-spacing:-0.36px;color:var(--ink);margin:40px 0 16px}
+.palette-label:first-of-type{margin-top:0}
+.palette-note{font-size:13px;line-height:1.5;color:var(--ink-60);margin-top:12px}
+
+/* 타이포 견본 */
+.type-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid var(--hairline)}
+.type-row:last-child{border-bottom:1px solid var(--hairline)}
+.type-spec{font-size:13px;line-height:1.5;color:var(--ink-60);letter-spacing:0}
+.type-spec b{display:block;font-weight:400;color:var(--ink);font-size:15px}
+.type-sample{color:var(--ink);overflow-wrap:anywhere}
+
+/* 탭 · 검색 */
+.tabs{display:flex;gap:4px;box-shadow:inset 0 -1px 0 var(--hairline);overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:12px 16px;min-height:44px;
+  font-family:var(--ff);font-size:18px;line-height:1.45;letter-spacing:-0.36px;color:var(--ink-60);cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--primary)}
+.tab-panel{padding-top:20px}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--divider)}
+.list li span:first-child{color:var(--ink);min-width:0}
+.list .date{font-size:13px;color:var(--ink-60);white-space:nowrap}
+.search{position:relative;max-width:480px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-60)}
+.search input{width:100%;height:44px;padding:12px 16px 12px 42px;border:1px solid var(--hairline);border-radius:var(--r-sm);
+  font-family:var(--ff);font-size:15px;letter-spacing:-0.3px;color:var(--ink);background:var(--canvas)}
+.search input:focus{outline:2px solid var(--yellow);outline-offset:2px;border-color:var(--primary)}
+.demo-block{display:flex;flex-direction:column;gap:12px}
+.demo-label{font-size:13px;line-height:1.5;color:var(--ink-60)}
+.demo-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.components{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+
+/* 빠른 링크 */
+.quick-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.quick{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--ink);min-height:120px}
+.quick:hover{background:var(--primary);border-color:var(--primary);color:#fff;text-decoration:none}
+.quick svg{width:28px;height:28px}
+
+/* 울리니 콜아웃 */
+.callout{background:var(--u-cream);color:var(--u-line);border-radius:var(--r-lg);padding:24px;display:flex;gap:20px;align-items:center}
+.callout img{width:88px;height:auto;flex:none}
+.callout h3{color:var(--u-line);font-size:22px;line-height:1.4;letter-spacing:-0.44px}
+.callout p{font-size:17px;line-height:1.65;letter-spacing:-0.34px;margin-top:4px}
+.rules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:24px}
+.rule{border:1px solid var(--hairline);border-radius:var(--r-md);padding:16px;background:var(--canvas);display:flex;flex-direction:column;gap:6px}
+.rule .x{width:28px;height:28px;border-radius:50%;background:#FDECEE;color:var(--status-new);display:grid;place-items:center;font-size:15px;line-height:1}
+.rule p{font-size:15px;line-height:1.5;color:var(--ink)}
+
+/* 딥그린 밴드 */
+.band-dark .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}
+.band-dark p{color:#D0D0D0;font-size:17px;line-height:1.65;max-width:56ch;margin-top:8px}
+
+.credits{font-size:13px;line-height:1.7;color:var(--ink-60);display:flex;flex-direction:column;gap:4px}
+
+@media (max-width:1024px){
+  .g4:not(.quick-grid){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:834px){
+  .band,.hero{padding:64px 32px}
+  .page-header{padding:12px 32px}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .components{grid-template-columns:1fr}
+  .hero h1{font-size:40px;letter-spacing:-0.8px}
+  .rules{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .band,.hero{padding:48px 16px}
+  .page-header{padding:12px 16px}
+  .brand img{height:44px}
+  .brand-name{font-size:18px}
+  .g4:not(.quick-grid),.g3{grid-template-columns:1fr}
+  .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h1{font-size:32px;letter-spacing:-0.64px}
+  .hero .lead{font-size:17px}
+  .section-title{font-size:24px}
+  .type-row{grid-template-columns:1fr;gap:6px}
+  .callout{flex-direction:column;align-items:flex-start}
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .header-link{display:none}
+}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="UOU 디자인 울리니 에디션 처음으로">
+      <img src="assets/ulrinee/ulrinee-main.png" alt="울산대학교 마스코트 울리니">
+      <span><span class="brand-name">UOU 디자인 · 울리니 에디션</span><span class="brand-sub">DESIGN-UOU.md 커스텀 미리보기</span></span>
+    </a>
+    <a class="btn btn-outline header-link" href="https://github.com/dandyjaewon-beep/uou-design-ulrinee">GitHub 저장소</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">울산대학교 디자인 문법 · 커스텀 에디션</p>
+      <h1 id="hero-title">초록은 그대로, 표정은 울리니처럼</h1>
+      <p class="lead">울산대학교 디자인 문법(DESIGN-UOU.md)을 바탕으로 로고를 공식 마스코트 <b style="font-weight:400;color:var(--primary)">울리니</b>로, 서체를 무료 폰트 <b style="font-weight:400;color:var(--primary)">주아</b>로 바꾸고, 원본 문서의 오류 세 가지를 바로잡았습니다.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://github.com/dandyjaewon-beep/uou-design-ulrinee/blob/main/DESIGN-UOU.md">디자인 문서 보기</a>
+        <a class="btn btn-outline" href="#fixes">버그 수정 내역</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="changes-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">무엇이 바뀌었나</p>
+        <h2 id="changes-title" class="section-title">원본 문법에서 바꾼 네 가지</h2>
+      </div>
+      <div class="grid g4">
+        <article class="card card-featured">
+          <span><span class="badge-category">로고</span></span>
+          <h3>공식 마스코트 울리니</h3>
+          <p>학교 홈페이지에 공개된 원본 PNG를 그대로 씁니다. 기울이거나 색을 바꾸지 않습니다.</p>
+          <p class="meta">assets/ulrinee/</p>
+        </article>
+        <article class="card">
+          <span><span class="badge-category">폰트</span> <span class="badge badge-new">NEW</span></span>
+          <h3>윤고딕 → 주아(Jua)</h3>
+          <p>둥글고 친근한 무료 폰트(SIL OFL 1.1). 굵기가 하나라 크기와 색으로 위계를 만듭니다.</p>
+          <p class="meta">Google Fonts</p>
+        </article>
+        <article class="card">
+          <span><span class="badge-category">색상</span></span>
+          <h3>울리니 팔레트 추가</h3>
+          <p>공식 색상규정 7색을 보조 팔레트로 넣었습니다. 대표 색은 여전히 UOU Green 하나입니다.</p>
+          <p class="meta">colors.ulrinee-*</p>
+        </article>
+        <article class="card">
+          <span><span class="badge-category">수정</span> <span class="badge badge-yellow">FIX</span></span>
+          <h3>원본 문서 오류 3건</h3>
+          <p>폰트 경로, CI 이미지 경로, 토큰 이름 오타를 실제 파일과 정의에 맞게 고쳤습니다.</p>
+          <p class="meta">아래 '버그 수정 내역' 참고</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-warm" id="fixes" aria-labelledby="fixes-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">버그 수정 내역</p>
+        <h2 id="fixes-title" class="section-title">문서대로 따라 하면 깨지던 곳</h2>
+        <p class="section-lead">원본 DESIGN-UOU.md가 가리키던 경로와 이름이 실제 파일·정의와 달라, 문서의 코드를 그대로 쓰면 폰트와 이미지가 불러와지지 않았습니다.</p>
+      </div>
+      <div class="grid g3">
+        <article class="card fix">
+          <h3>① 폰트 경로 (7곳)</h3>
+          <div class="row before"><span class="k">이전</span><code>UOU_CI_폰트/윤고딕 폰트/YDYGO135.ttf</code></div>
+          <div class="row after"><span class="k">이후</span><code>UOU_CI_font/YDYGO135.ttf</code></div>
+          <p class="meta">존재하지 않는 폴더를 가리켜 @font-face가 실패했습니다. 공개 저장소에는 폰트 파일을 넣지 않고, 내부용 경로만 바로잡았습니다.</p>
+        </article>
+        <article class="card fix">
+          <h3>② CI 이미지 경로 (2곳)</h3>
+          <div class="row before"><span class="k">이전</span><code>UOU_CI/UOU_CI/uou_sm_*.gif</code></div>
+          <div class="row after"><span class="k">이후</span><code>UOU_CI/uou_sm_01.gif</code></div>
+          <p class="meta">폴더가 한 단계 더 적혀 있었습니다. 파일 세 개의 용도(교표·UOU 심볼·국영문 로고)도 함께 적었습니다.</p>
+        </article>
+        <article class="card fix">
+          <h3>③ 토큰 이름 오타 (14곳)</h3>
+          <div class="row before"><span class="k">이전</span><code>{component.button-primary}</code></div>
+          <div class="row after"><span class="k">이후</span><code>{components.button-primary}</code></div>
+          <p class="meta">정의는 <code>components:</code>(복수형)인데 본문은 단수형으로 참조해, 토큰 11종을 찾을 수 없었습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="color-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">색상</p>
+        <h2 id="color-title" class="section-title">브랜드 색 하나, 캐릭터 색 일곱</h2>
+      </div>
+      <h3 class="palette-label">UOU 기관 색상</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#006B3C"></div><div class="info"><span class="name">UOU Green</span><span class="hex">#006B3C · primary</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#004D2B"></div><div class="info"><span class="name">Primary Deep</span><span class="hex">#004D2B · band</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#58595B"></div><div class="info"><span class="name">UOU Gray</span><span class="hex">#58595B</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#F2A900"></div><div class="info"><span class="name">UOU Yellow</span><span class="hex">#F2A900 · 강조 전용</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#F7F7F5"></div><div class="info"><span class="name">Canvas Warm</span><span class="hex">#F7F7F5</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#1A1A1A"></div><div class="info"><span class="name">Ink</span><span class="hex">#1A1A1A</span></div></div>
+      </div>
+      <h3 class="palette-label">울리니 캐릭터 색상 (공식 색상규정)</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#B9D887"></div><div class="info"><span class="name">Leaf · 몸</span><span class="hex">#B9D887</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#99C45C"></div><div class="info"><span class="name">Sprout · 음영</span><span class="hex">#99C45C</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#F9E79B"></div><div class="info"><span class="name">Cream · 뿔·배</span><span class="hex">#F9E79B</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#76A854"></div><div class="info"><span class="name">Moss · 이마</span><span class="hex">#76A854</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#2C3D28"></div><div class="info"><span class="name">Line · 외곽선</span><span class="hex">#2C3D28</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#EDBE7F"></div><div class="info"><span class="name">Blush · 볼</span><span class="hex">#EDBE7F</span></div></div>
+        <div class="swatch"><div class="chip" style="background:#F08C8C"></div><div class="info"><span class="name">Mouth · 입 안</span><span class="hex">#F08C8C</span></div></div>
+      </div>
+      <p class="palette-note">울리니 색상은 마스코트 주변(콜아웃 배경, 울리니 배지)에만 씁니다. 버튼·링크·딥그린 밴드는 UOU Green을 유지합니다.</p>
+    </div>
+  </section>
+
+  <section class="band band-warm" aria-labelledby="type-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">타이포그래피</p>
+        <h2 id="type-title" class="section-title">주아 한 가지 굵기, 크기로 만드는 위계</h2>
+        <p class="section-lead">주아는 굵기가 400 하나뿐입니다. 굵게(bold)를 쓰면 브라우저가 가짜 굵기를 만들어 둥근 획이 뭉개지므로, 모든 토큰을 400으로 두고 크기와 색으로 구분합니다.</p>
+      </div>
+      <div>
+        <div class="type-row"><p class="type-spec"><b>Hero Display</b>52px · 1.2</p><p class="type-sample" style="font-size:52px;line-height:1.2;letter-spacing:-1.04px">진리 · 자주 · 봉사</p></div>
+        <div class="type-row"><p class="type-spec"><b>Display Large</b>40px · 1.25</p><p class="type-sample" style="font-size:40px;line-height:1.25;letter-spacing:-0.8px">울산대학교 AI혁신원</p></div>
+        <div class="type-row"><p class="type-spec"><b>Section Title</b>28px · 1.35</p><p class="type-sample" style="font-size:28px;line-height:1.35;letter-spacing:-0.56px">이번 주 공지사항</p></div>
+        <div class="type-row"><p class="type-spec"><b>Heading Large</b>22px · 1.4</p><p class="type-sample" style="font-size:22px;line-height:1.4;letter-spacing:-0.44px">생성형 AI 업무자동화 설명회 안내</p></div>
+        <div class="type-row"><p class="type-spec"><b>Lead</b>20px · 1.55</p><p class="type-sample" style="font-size:20px;line-height:1.55;letter-spacing:-0.4px;color:var(--ink-80)">교직원 누구나 참여할 수 있는 실습 중심 과정입니다.</p></div>
+        <div class="type-row"><p class="type-spec"><b>Body</b>15px · 1.7</p><p class="type-sample" style="font-size:15px;line-height:1.7;letter-spacing:-0.3px;color:var(--body)">한글 본문은 줄 간격 1.7을 지킵니다. Korean and English share one typeface, so bilingual text reads as a single voice.</p></div>
+        <div class="type-row"><p class="type-spec"><b>Caption</b>13px · 1.5</p><p class="type-sample" style="font-size:13px;line-height:1.5;letter-spacing:-0.26px;color:var(--ink-60)">2026.10.10 · AI혁신팀</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="comp-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">컴포넌트</p>
+        <h2 id="comp-title" class="section-title">문법 그대로, 글꼴만 둥글게</h2>
+      </div>
+      <div class="components">
+        <div class="demo-block">
+          <p class="demo-label">버튼 · button-primary / outline / ghost</p>
+          <div class="demo-row">
+            <button class="btn btn-primary" type="button">신청하기</button>
+            <button class="btn btn-outline" type="button">더보기</button>
+            <button class="btn btn-ghost" type="button">취소</button>
+          </div>
+        </div>
+        <div class="demo-block">
+          <p class="demo-label">배지 · badge-new / yellow / category / ulrinee</p>
+          <div class="demo-row">
+            <span class="badge badge-new">NEW</span>
+            <span class="badge badge-yellow">EVENT</span>
+            <span class="badge-category">학사</span>
+            <span class="badge badge-ulrinee">울리니 추천</span>
+          </div>
+        </div>
+        <div class="demo-block">
+          <p class="demo-label">검색 · search-input</p>
+          <label class="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" placeholder="공지, 규정, 서식 검색" aria-label="검색어">
+          </label>
+        </div>
+        <div class="demo-block">
+          <p class="demo-label">탭 · tab-active / tab-inactive</p>
+          <div>
+            <div class="tabs" role="tablist" aria-label="게시판">
+              <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1" type="button">공지</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2" type="button" tabindex="-1">행사</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3" type="button" tabindex="-1">채용</button>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="p1" aria-labelledby="t1">
+              <ul class="list"><li><span>2학기 그룹웨어 AI 기능 안내 <span class="badge badge-new">NEW</span></span><span class="date">10.10</span></li><li><span>AI 서비스 활용 보안 준수사항</span><span class="date">10.02</span></li></ul>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+              <ul class="list"><li><span>울리니와 함께하는 캠퍼스 투어</span><span class="date">10.15</span></li><li><span>AX센터 교육 성과 공유회</span><span class="date">10.24</span></li></ul>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+              <ul class="list"><li><span>AI혁신원 연구원 채용 공고</span><span class="date">10.08</span></li><li><span>학생 조교 모집</span><span class="date">10.01</span></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="palette-label" style="margin-top:56px">빠른 링크 · quick-link-card</p>
+      <div class="grid g4 quick-grid">
+        <a class="card quick" href="#comp-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg><span>규정집</span></a>
+        <a class="card quick" href="#comp-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span>학사일정</span></a>
+        <a class="card quick" href="#comp-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span>AI 도우미</span></a>
+        <a class="card quick" href="#comp-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span>서식 자료실</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-warm" aria-labelledby="mascot-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">마스코트</p>
+        <h2 id="mascot-title" class="section-title">울리니를 쓸 때 지킬 것</h2>
+      </div>
+      <div class="callout">
+        <img src="assets/ulrinee/ulrinee-sub.png" alt="손을 흔드는 울리니">
+        <div>
+          <h3>안녕하세요, 울리니예요!</h3>
+          <p>저는 기린에서 태어난 울산대학교 마스코트예요. 안내문이나 자주 묻는 질문 옆에서 한 번만 인사할게요. 저를 바꾸지 말고 그대로 써 주세요.</p>
+        </div>
+      </div>
+      <div class="rules" role="list" aria-label="울리니 금지규정">
+        <div class="rule" role="listitem"><span class="x" aria-hidden="true">✕</span><p>기울이거나 돌리기</p></div>
+        <div class="rule" role="listitem"><span class="x" aria-hidden="true">✕</span><p>선 굵기 바꾸기</p></div>
+        <div class="rule" role="listitem"><span class="x" aria-hidden="true">✕</span><p>색상 바꾸기</p></div>
+        <div class="rule" role="listitem"><span class="x" aria-hidden="true">✕</span><p>늘리거나 눌러 형태 바꾸기</p></div>
+        <div class="rule" role="listitem"><span class="x" aria-hidden="true">✕</span><p>일부만 자르거나 고치기</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-dark" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div>
+        <h2 id="cta-title" class="section-title">이 문법으로 직접 만들어 보세요</h2>
+        <p>DESIGN-UOU.md를 Claude에게 건네고 "이 디자인 문법으로 페이지를 만들어 줘"라고 요청하면, 울리니 에디션의 색·서체·컴포넌트가 그대로 적용됩니다.</p>
+      </div>
+      <a class="btn btn-outline-dark" href="https://github.com/dandyjaewon-beep/uou-design-ulrinee/blob/main/DESIGN-UOU.md">DESIGN-UOU.md 열기</a>
+    </div>
+  </section>
+
+  <section class="band" aria-label="출처와 라이선스">
+    <div class="wrap credits">
+      <p>울리니 캐릭터 이미지와 CI(교표·로고)의 권리는 울산대학교에 있으며, 학교 홈페이지에 공개된 원본을 수정 없이 사용했습니다.</p>
+      <p>주아(Jua) 폰트: Woowahan Brothers, SIL Open Font License 1.1 · Google Fonts</p>
+      <p>윤고딕(YDYGO)은 유료 폰트라 이 공개 저장소에 포함하지 않았습니다.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  const tabs=[...document.querySelectorAll('[role="tab"]')];
+  function select(t){
+    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+    t.focus();
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight')select(tabs[(i+1)%tabs.length]);
+      if(e.key==='ArrowLeft')select(tabs[(i-1+tabs.length)%tabs.length]);
+    });
+  });
+})();
+</script>
+</body>
+</html>
